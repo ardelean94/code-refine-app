@@ -32,9 +32,7 @@
             browseFiles = new Button();
             browseFolder = new FolderBrowserDialog();
             selectedLocationLabel = new Label();
-            patternLabel = new Label();
-            patternText = new TextBox();
-            textBox1 = new TextBox();
+            regexPatternText = new TextBox();
             regexPatternLabel = new Label();
             processFiles = new Button();
             SuspendLayout();
@@ -54,6 +52,7 @@
             browseFiles.TabIndex = 1;
             browseFiles.Text = "Locate Files";
             browseFiles.UseVisualStyleBackColor = true;
+            browseFiles.Click += browseFiles_Click;
             // 
             // selectedLocationLabel
             // 
@@ -64,64 +63,47 @@
             selectedLocationLabel.TabIndex = 2;
             selectedLocationLabel.Text = "Select the folder where the files can be found";
             // 
-            // patternLabel
+            // regexPatternText
             // 
-            patternLabel.AutoSize = true;
-            patternLabel.Location = new Point(12, 172);
-            patternLabel.Name = "patternLabel";
-            patternLabel.Size = new Size(133, 48);
-            patternLabel.TabIndex = 3;
-            patternLabel.Text = "Pattern";
-            // 
-            // patternText
-            // 
-            patternText.Location = new Point(12, 234);
-            patternText.Name = "patternText";
-            patternText.Size = new Size(995, 55);
-            patternText.TabIndex = 4;
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(12, 396);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(995, 55);
-            textBox1.TabIndex = 6;
+            regexPatternText.Location = new Point(12, 243);
+            regexPatternText.Name = "regexPatternText";
+            regexPatternText.Size = new Size(995, 55);
+            regexPatternText.TabIndex = 6;
             // 
             // regexPatternLabel
             // 
             regexPatternLabel.AutoSize = true;
-            regexPatternLabel.Location = new Point(12, 324);
+            regexPatternLabel.Location = new Point(12, 171);
             regexPatternLabel.Name = "regexPatternLabel";
-            regexPatternLabel.Size = new Size(275, 48);
+            regexPatternLabel.Size = new Size(242, 48);
             regexPatternLabel.TabIndex = 5;
-            regexPatternLabel.Text = "Pattern as regex";
+            regexPatternLabel.Text = "Regex pattern";
             // 
             // processFiles
             // 
-            processFiles.Location = new Point(12, 490);
+            processFiles.Location = new Point(12, 322);
             processFiles.Name = "processFiles";
             processFiles.Size = new Size(251, 67);
             processFiles.TabIndex = 7;
             processFiles.Text = "Process files";
             processFiles.UseVisualStyleBackColor = true;
+            processFiles.Click += processFiles_Click;
             // 
             // Dashboard
             // 
             AutoScaleDimensions = new SizeF(20F, 48F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1262, 650);
+            ClientSize = new Size(1262, 419);
             Controls.Add(processFiles);
-            Controls.Add(textBox1);
+            Controls.Add(regexPatternText);
             Controls.Add(regexPatternLabel);
-            Controls.Add(patternText);
-            Controls.Add(patternLabel);
             Controls.Add(selectedLocationLabel);
             Controls.Add(browseFiles);
             Controls.Add(selectedLocation);
             Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Margin = new Padding(6);
             MaximizeBox = false;
-            MaximumSize = new Size(1362, 650);
+            MaximumSize = new Size(1284, 475);
             Name = "Dashboard";
             Text = "Dashboard";
             ResumeLayout(false);
@@ -133,9 +115,7 @@
         private Button browseFiles;
         private FolderBrowserDialog browseFolder;
         private Label selectedLocationLabel;
-        private Label patternLabel;
-        private TextBox patternText;
-        private TextBox textBox1;
+        private TextBox regexPatternText;
         private Label regexPatternLabel;
         private Button processFiles;
     }
