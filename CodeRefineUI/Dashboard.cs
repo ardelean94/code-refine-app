@@ -1,4 +1,5 @@
 using CodeRefineLibrary;
+using System.Data;
 
 namespace CodeRefineUI
 {
@@ -9,7 +10,7 @@ namespace CodeRefineUI
             InitializeComponent();
         }
 
-        private void processFiles_Click(object sender, EventArgs e)
+        private async void processFiles_Click(object sender, EventArgs e)
         {
             if (!IsModelValid())
             {
@@ -17,7 +18,9 @@ namespace CodeRefineUI
                 return;
             }
 
-            FileProcessor.FindPatternAndProcess(selectedLocation.Text, regexPatternOptions.Text);
+            UpdateStatus("In progress");
+            await FileProcessor.FindPatternAndProcess(selectedLocation.Text, regexPatternOptions.Text);
+            UpdateStatus("Done");
         }
 
         private bool IsModelValid()
@@ -34,6 +37,11 @@ namespace CodeRefineUI
             {
                 selectedLocation.Text = browseFolderDialog.SelectedPath;
             }
+        }
+
+        private void UpdateStatus(string message)
+        {
+            status.Text = message;
         }
     }
 }

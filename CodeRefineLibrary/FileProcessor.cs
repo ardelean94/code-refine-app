@@ -6,18 +6,20 @@ namespace CodeRefineLibrary
     {
         private const string FileTypes = "*.Designer.cs";
         private const string ConditionMatch = ".SetImageKey(";
-        public static void FindPatternAndProcess(string location, string pattern)
+        public static async Task FindPatternAndProcess(string location, string pattern)
         {
+            await Task.Delay(3000);
             var files = Directory.GetFiles(location, FileTypes);
 
             foreach(var file in files)
             {
-                var lines = File.ReadAllLines(file).ToList();
-                bool isFileModified = ProcessFile(lines, pattern);
+                var linesArray = await File.ReadAllLinesAsync(file);
+                var linesList = linesArray.ToList();
+                bool isFileModified = ProcessFile(linesList, pattern);
 
                 if (isFileModified)
                 {
-                    File.WriteAllLines(file, lines);
+                    await File.WriteAllLinesAsync(file, linesList);
                 }
             }
         }

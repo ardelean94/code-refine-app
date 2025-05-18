@@ -35,6 +35,7 @@
             regexPatternLabel = new Label();
             processFiles = new Button();
             regexPatternOptions = new ComboBox();
+            status = new Label();
             SuspendLayout();
             // 
             // selectedLocation
@@ -92,11 +93,20 @@
             regexPatternOptions.Size = new Size(995, 56);
             regexPatternOptions.TabIndex = 8;
             // 
+            // status
+            // 
+            status.AutoSize = true;
+            status.Location = new Point(1041, 248);
+            status.Name = "status";
+            status.Size = new Size(0, 48);
+            status.TabIndex = 9;
+            // 
             // Dashboard
             // 
             AutoScaleDimensions = new SizeF(20F, 48F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1262, 419);
+            Controls.Add(status);
             Controls.Add(regexPatternOptions);
             Controls.Add(processFiles);
             Controls.Add(regexPatternLabel);
@@ -121,5 +131,6 @@
         private Label regexPatternLabel;
         private Button processFiles;
         private ComboBox regexPatternOptions;
+        private Label status;
     }
 }
