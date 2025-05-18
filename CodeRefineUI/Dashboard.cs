@@ -41,7 +41,7 @@ namespace CodeRefineUI
 
         private void UpdateStatus(string message)
         {
-            status.Text = message;
+            toolStripStatusLabel.Text = message;
         }
     }
 }

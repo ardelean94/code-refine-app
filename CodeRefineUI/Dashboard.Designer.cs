@@ -35,7 +35,9 @@
             regexPatternLabel = new Label();
             processFiles = new Button();
             regexPatternOptions = new ComboBox();
-            status = new Label();
+            statusBar = new StatusStrip();
+            toolStripStatusLabel = new ToolStripStatusLabel();
+            statusBar.SuspendLayout();
             SuspendLayout();
             // 
             // selectedLocation
@@ -93,20 +95,29 @@
             regexPatternOptions.Size = new Size(995, 56);
             regexPatternOptions.TabIndex = 8;
             // 
-            // status
+            // statusBar
             // 
-            status.AutoSize = true;
-            status.Location = new Point(1041, 248);
-            status.Name = "status";
-            status.Size = new Size(0, 48);
-            status.TabIndex = 9;
+            statusBar.ImageScalingSize = new Size(24, 24);
+            statusBar.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel });
+            statusBar.Location = new Point(0, 400);
+            statusBar.Name = "statusBar";
+            statusBar.Size = new Size(1262, 39);
+            statusBar.TabIndex = 10;
+            statusBar.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel
+            // 
+            toolStripStatusLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            toolStripStatusLabel.Name = "toolStripStatusLabel";
+            toolStripStatusLabel.Size = new Size(95, 32);
+            toolStripStatusLabel.Text = "Waiting";
             // 
             // Dashboard
             // 
             AutoScaleDimensions = new SizeF(20F, 48F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1262, 419);
-            Controls.Add(status);
+            ClientSize = new Size(1262, 439);
+            Controls.Add(statusBar);
             Controls.Add(regexPatternOptions);
             Controls.Add(processFiles);
             Controls.Add(regexPatternLabel);
@@ -116,9 +127,11 @@
             Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Margin = new Padding(6);
             MaximizeBox = false;
-            MaximumSize = new Size(1284, 475);
+            MaximumSize = new Size(1600, 500);
             Name = "Dashboard";
             Text = "Dashboard";
+            statusBar.ResumeLayout(false);
+            statusBar.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -131,6 +144,7 @@
         private Label regexPatternLabel;
         private Button processFiles;
         private ComboBox regexPatternOptions;
-        private Label status;
+        private StatusStrip statusBar;
+        private ToolStripStatusLabel toolStripStatusLabel;
     }
 }
