@@ -19,13 +19,18 @@ namespace CodeRefineUI
             }
 
             UpdateStatus("In progress");
-            await FileProcessor.FindPatternAndProcess(selectedLocation.Text, regexPatternOptions.Text);
+            await FileProcessor.FindPatternAndProcess(selectedLocation.Text, fileTypeOptions.Text, 
+                conditionOptions.Text, patternOptions.Text);
             UpdateStatus("Done");
         }
 
         private bool IsModelValid()
         {
-            if (string.IsNullOrEmpty(selectedLocation.Text) || regexPatternOptions.SelectedIndex == -1)
+            if (string.IsNullOrEmpty(selectedLocation.Text) || 
+                fileTypeOptions.SelectedIndex == -1 ||
+                conditionOptions.SelectedIndex == -1 ||
+                patternOptions.SelectedIndex == -1
+               )
                 return false;
 
             return true;

@@ -34,24 +34,28 @@
             selectedLocationLabel = new Label();
             regexPatternLabel = new Label();
             processFiles = new Button();
-            regexPatternOptions = new ComboBox();
+            patternOptions = new ComboBox();
             statusBar = new StatusStrip();
             toolStripStatusLabel = new ToolStripStatusLabel();
+            conditionLabel = new Label();
+            conditionOptions = new ComboBox();
+            fileTypeOptions = new ComboBox();
+            fileTypeLabel = new Label();
             statusBar.SuspendLayout();
             SuspendLayout();
             // 
             // selectedLocation
             // 
             selectedLocation.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            selectedLocation.Location = new Point(12, 93);
+            selectedLocation.Location = new Point(12, 79);
             selectedLocation.Name = "selectedLocation";
-            selectedLocation.Size = new Size(995, 55);
+            selectedLocation.Size = new Size(991, 55);
             selectedLocation.TabIndex = 0;
             // 
             // browseFiles
             // 
             browseFiles.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            browseFiles.Location = new Point(1013, 93);
+            browseFiles.Location = new Point(1009, 79);
             browseFiles.Name = "browseFiles";
             browseFiles.Size = new Size(236, 55);
             browseFiles.TabIndex = 1;
@@ -71,15 +75,15 @@
             // regexPatternLabel
             // 
             regexPatternLabel.AutoSize = true;
-            regexPatternLabel.Location = new Point(12, 171);
+            regexPatternLabel.Location = new Point(12, 395);
             regexPatternLabel.Name = "regexPatternLabel";
-            regexPatternLabel.Size = new Size(242, 48);
+            regexPatternLabel.Size = new Size(271, 48);
             regexPatternLabel.TabIndex = 5;
-            regexPatternLabel.Text = "Regex pattern";
+            regexPatternLabel.Text = "Remove Pattern";
             // 
             // processFiles
             // 
-            processFiles.Location = new Point(12, 322);
+            processFiles.Location = new Point(12, 522);
             processFiles.Name = "processFiles";
             processFiles.Size = new Size(251, 67);
             processFiles.TabIndex = 7;
@@ -87,23 +91,24 @@
             processFiles.UseVisualStyleBackColor = true;
             processFiles.Click += processFiles_Click;
             // 
-            // regexPatternOptions
+            // patternOptions
             // 
-            regexPatternOptions.DropDownStyle = ComboBoxStyle.DropDownList;
-            regexPatternOptions.FormattingEnabled = true;
-            regexPatternOptions.Items.AddRange(new object[] { "(\\w+)\\.Image = \\(\\(System\\.Drawing\\.Image\\)", "(\\w+)\\.Icon = \\(\\(System\\.Drawing\\.Icon\\)" });
-            regexPatternOptions.Location = new Point(12, 238);
-            regexPatternOptions.Name = "regexPatternOptions";
-            regexPatternOptions.Size = new Size(995, 56);
-            regexPatternOptions.TabIndex = 8;
+            patternOptions.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            patternOptions.DropDownStyle = ComboBoxStyle.DropDownList;
+            patternOptions.FormattingEnabled = true;
+            patternOptions.Items.AddRange(new object[] { "(\\w+)\\.Image = \\(\\(System\\.Drawing\\.Image\\)", "(\\w+)\\.Icon = \\(\\(System\\.Drawing\\.Icon\\)" });
+            patternOptions.Location = new Point(12, 446);
+            patternOptions.Name = "patternOptions";
+            patternOptions.Size = new Size(995, 56);
+            patternOptions.TabIndex = 8;
             // 
             // statusBar
             // 
             statusBar.ImageScalingSize = new Size(24, 24);
             statusBar.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel });
-            statusBar.Location = new Point(0, 400);
+            statusBar.Location = new Point(0, 621);
             statusBar.Name = "statusBar";
-            statusBar.Size = new Size(1262, 39);
+            statusBar.Size = new Size(1258, 39);
             statusBar.TabIndex = 10;
             statusBar.Text = "statusStrip1";
             // 
@@ -114,13 +119,57 @@
             toolStripStatusLabel.Size = new Size(95, 32);
             toolStripStatusLabel.Text = "Waiting";
             // 
+            // conditionLabel
+            // 
+            conditionLabel.AutoSize = true;
+            conditionLabel.Location = new Point(12, 273);
+            conditionLabel.Name = "conditionLabel";
+            conditionLabel.Size = new Size(388, 48);
+            conditionLabel.TabIndex = 11;
+            conditionLabel.Text = "When Condition Found";
+            // 
+            // conditionOptions
+            // 
+            conditionOptions.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            conditionOptions.DropDownStyle = ComboBoxStyle.DropDownList;
+            conditionOptions.FormattingEnabled = true;
+            conditionOptions.Items.AddRange(new object[] { ".SetImageKey(" });
+            conditionOptions.Location = new Point(12, 324);
+            conditionOptions.Name = "conditionOptions";
+            conditionOptions.Size = new Size(995, 56);
+            conditionOptions.TabIndex = 12;
+            // 
+            // fileTypeOptions
+            // 
+            fileTypeOptions.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            fileTypeOptions.DropDownStyle = ComboBoxStyle.DropDownList;
+            fileTypeOptions.FormattingEnabled = true;
+            fileTypeOptions.Items.AddRange(new object[] { "*.Designer.cs" });
+            fileTypeOptions.Location = new Point(12, 203);
+            fileTypeOptions.Name = "fileTypeOptions";
+            fileTypeOptions.Size = new Size(995, 56);
+            fileTypeOptions.TabIndex = 14;
+            // 
+            // fileTypeLabel
+            // 
+            fileTypeLabel.AutoSize = true;
+            fileTypeLabel.Location = new Point(12, 152);
+            fileTypeLabel.Name = "fileTypeLabel";
+            fileTypeLabel.Size = new Size(159, 48);
+            fileTypeLabel.TabIndex = 13;
+            fileTypeLabel.Text = "File Type";
+            // 
             // Dashboard
             // 
             AutoScaleDimensions = new SizeF(20F, 48F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1262, 439);
+            ClientSize = new Size(1258, 660);
+            Controls.Add(fileTypeOptions);
+            Controls.Add(fileTypeLabel);
+            Controls.Add(conditionOptions);
+            Controls.Add(conditionLabel);
             Controls.Add(statusBar);
-            Controls.Add(regexPatternOptions);
+            Controls.Add(patternOptions);
             Controls.Add(processFiles);
             Controls.Add(regexPatternLabel);
             Controls.Add(selectedLocationLabel);
@@ -129,7 +178,6 @@
             Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Margin = new Padding(6);
             MaximizeBox = false;
-            MaximumSize = new Size(1600, 500);
             Name = "Dashboard";
             Text = "Dashboard";
             statusBar.ResumeLayout(false);
@@ -145,8 +193,12 @@
         private Label selectedLocationLabel;
         private Label regexPatternLabel;
         private Button processFiles;
-        private ComboBox regexPatternOptions;
+        private ComboBox patternOptions;
         private StatusStrip statusBar;
         private ToolStripStatusLabel toolStripStatusLabel;
+        private Label conditionLabel;
+        private ComboBox conditionOptions;
+        private ComboBox fileTypeOptions;
+        private Label fileTypeLabel;
     }
 }

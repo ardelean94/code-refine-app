@@ -4,17 +4,16 @@ namespace CodeRefineLibrary
 {
     public static class FileProcessor
     {
-        private const string FileTypes = "*.Designer.cs";
-        private const string ConditionMatch = ".SetImageKey(";
-        public static async Task FindPatternAndProcess(string location, string pattern)
+        public static async Task FindPatternAndProcess(string location, string fileType, 
+            string conditionMatch, string patternToRemove)
         {
-            var files = Directory.GetFiles(location, FileTypes);
+            var files = Directory.GetFiles(location, fileType);
 
             foreach(var file in files)
             {
                 var linesArray = await File.ReadAllLinesAsync(file);
                 var linesList = linesArray.ToList();
-                bool isFileModified = ProcessFile(linesList, pattern);
+                bool isFileModified = ProcessFile(linesList, conditionMatch, patternToRemove);
 
                 if (isFileModified)
                 {
@@ -23,7 +22,7 @@ namespace CodeRefineLibrary
             }
         }
 
-        private static bool ProcessFile(List<string> lines, string pattern)
+        private static bool ProcessFile(List<string> lines, string conditionMatch, string pattern)
         {
             bool modified = false;
 
@@ -34,7 +33,7 @@ namespace CodeRefineLibrary
                 if(match.Success)
                 {
                     var controlName = match.Groups[1].Value;
-                    bool isConditionMet = IsConditionMet(lines, controlName);                       
+                    bool isConditionMet = IsConditionMet(lines, conditionMatch, controlName);                       
 
                     if (isConditionMet)
                     {
@@ -48,13 +47,13 @@ namespace CodeRefineLibrary
             return modified;
         }
 
-        private static bool IsConditionMet(List<string> lines, string controlToMatch)
+        private static bool IsConditionMet(List<string> lines, string conditionMatch, string controlToMatch)
         {
             bool conditionMet = false;
 
             for (int j = 0; j < lines.Count; j++)
             {
-                if (lines[j].Contains($"{ConditionMatch}{controlToMatch}"))
+                if (lines[j].Contains($"{conditionMatch}{controlToMatch}"))
                 {
                     conditionMet = true;
                     break;
