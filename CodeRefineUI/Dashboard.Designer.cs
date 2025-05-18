@@ -30,7 +30,7 @@
         {
             selectedLocation = new TextBox();
             browseFiles = new Button();
-            browseFolder = new FolderBrowserDialog();
+            browseFolderDialog = new FolderBrowserDialog();
             selectedLocationLabel = new Label();
             regexPatternText = new TextBox();
             regexPatternLabel = new Label();
@@ -113,7 +113,7 @@
         #endregion
         private TextBox selectedLocation;
         private Button browseFiles;
-        private FolderBrowserDialog browseFolder;
+        private FolderBrowserDialog browseFolderDialog;
         private Label selectedLocationLabel;
         private TextBox regexPatternText;
         private Label regexPatternLabel;

@@ -30,9 +30,9 @@ namespace CodeRefineUI
 
         private void browseFiles_Click(object sender, EventArgs e)
         {
-            if(browseFolder.ShowDialog() == DialogResult.OK)
+            if(browseFolderDialog.ShowDialog() == DialogResult.OK)
             {
-                selectedLocation.Text = browseFolder.SelectedPath;
+                selectedLocation.Text = browseFolderDialog.SelectedPath;
             }
         }
     }
