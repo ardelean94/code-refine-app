@@ -4,9 +4,11 @@ namespace CodeRefineLibrary
 {
     public static class FileProcessor
     {
+        private const string FileTypes = "*.Designer.cs";
+        private const string ConditionMatch = ".SetImageKey(";
         public static void FindPatternAndProcess(string location, string pattern)
         {
-            var files = Directory.GetFiles(location, "*.Designer.cs");
+            var files = Directory.GetFiles(location, FileTypes);
 
             foreach(var file in files)
             {
@@ -51,7 +53,7 @@ namespace CodeRefineLibrary
 
             for (int j = 0; j < lines.Count; j++)
             {
-                if (lines[j].Contains($".SetImageKey({controlToMatch}"))
+                if (lines[j].Contains($"{ConditionMatch}{controlToMatch}"))
                 {
                     conditionMet = true;
                     break;
