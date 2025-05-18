@@ -17,12 +17,12 @@ namespace CodeRefineUI
                 return;
             }
 
-            FileProcessor.FindPatternAndProcess(selectedLocation.Text, regexPatternText.Text);
+            FileProcessor.FindPatternAndProcess(selectedLocation.Text, regexPatternOptions.Text);
         }
 
         private bool IsModelValid()
         {
-            if (string.IsNullOrEmpty(selectedLocation.Text) || string.IsNullOrEmpty(regexPatternText.Text))
+            if (string.IsNullOrEmpty(selectedLocation.Text) || regexPatternOptions.SelectedIndex == -1)
                 return false;
 
             return true;

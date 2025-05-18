@@ -32,9 +32,9 @@
             browseFiles = new Button();
             browseFolderDialog = new FolderBrowserDialog();
             selectedLocationLabel = new Label();
-            regexPatternText = new TextBox();
             regexPatternLabel = new Label();
             processFiles = new Button();
+            regexPatternOptions = new ComboBox();
             SuspendLayout();
             // 
             // selectedLocation
@@ -63,13 +63,6 @@
             selectedLocationLabel.TabIndex = 2;
             selectedLocationLabel.Text = "Select the folder where the files can be found";
             // 
-            // regexPatternText
-            // 
-            regexPatternText.Location = new Point(12, 243);
-            regexPatternText.Name = "regexPatternText";
-            regexPatternText.Size = new Size(995, 55);
-            regexPatternText.TabIndex = 6;
-            // 
             // regexPatternLabel
             // 
             regexPatternLabel.AutoSize = true;
@@ -89,13 +82,23 @@
             processFiles.UseVisualStyleBackColor = true;
             processFiles.Click += processFiles_Click;
             // 
+            // regexPatternOptions
+            // 
+            regexPatternOptions.DropDownStyle = ComboBoxStyle.DropDownList;
+            regexPatternOptions.FormattingEnabled = true;
+            regexPatternOptions.Items.AddRange(new object[] { "(\\w+)\\.Image = \\(\\(System\\.Drawing\\.Image\\)", "(\\w+)\\.Icon = \\(\\(System\\.Drawing\\.Icon\\)" });
+            regexPatternOptions.Location = new Point(12, 238);
+            regexPatternOptions.Name = "regexPatternOptions";
+            regexPatternOptions.Size = new Size(995, 56);
+            regexPatternOptions.TabIndex = 8;
+            // 
             // Dashboard
             // 
             AutoScaleDimensions = new SizeF(20F, 48F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1262, 419);
+            Controls.Add(regexPatternOptions);
             Controls.Add(processFiles);
-            Controls.Add(regexPatternText);
             Controls.Add(regexPatternLabel);
             Controls.Add(selectedLocationLabel);
             Controls.Add(browseFiles);
@@ -115,8 +118,8 @@
         private Button browseFiles;
         private FolderBrowserDialog browseFolderDialog;
         private Label selectedLocationLabel;
-        private TextBox regexPatternText;
         private Label regexPatternLabel;
         private Button processFiles;
+        private ComboBox regexPatternOptions;
     }
 }
