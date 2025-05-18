@@ -8,7 +8,6 @@ namespace CodeRefineLibrary
         private const string ConditionMatch = ".SetImageKey(";
         public static async Task FindPatternAndProcess(string location, string pattern)
         {
-            await Task.Delay(3000);
             var files = Directory.GetFiles(location, FileTypes);
 
             foreach(var file in files)
