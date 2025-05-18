@@ -42,6 +42,7 @@
             // 
             // selectedLocation
             // 
+            selectedLocation.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             selectedLocation.Location = new Point(12, 93);
             selectedLocation.Name = "selectedLocation";
             selectedLocation.Size = new Size(995, 55);
@@ -49,6 +50,7 @@
             // 
             // browseFiles
             // 
+            browseFiles.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             browseFiles.Location = new Point(1013, 93);
             browseFiles.Name = "browseFiles";
             browseFiles.Size = new Size(236, 55);
